@@ -93,6 +93,7 @@ void lookForward() {
 void setup() {
     Serial.begin(9600);
     calibrate();
+    delay(5000);
 }
 
 void printAngleDist() {
