@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html ng-app>
+  <head>
+    <title><%= title %></title>
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">    
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <script src="https://code.jquery.com/jquery-2.1.0.min.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+    <script src="http://cdn.sockjs.org/sockjs-0.3.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.11/angular.min.js"></script>
+    <script src="javascripts/keymaster.js"></script>
+    <script src="javascripts/robot.js"></script>
+  </head>
+  <body ng-controller="RobotCtrl">
+    <div class="rowi">
+      <div class="col-md-2">
+        <p class="well">
+        w - move forward<br>
+        s - move backward<br>
+        l,r - rotate left/right<br>
+        q - stop<br>
+        e - look around
+        </p>
+      </div>
+      <div class="col-md-8 text-center">
+        <img src="http://192.168.0.8:8080/?action=stream"i id="fpv" class="img-thumbnail">
+      </div>
+      <div class="col-md-2">
+        <form ng-submit="sendCommand()">
+          <input type="text" ng-model="commandText" placeholder="Type your command here" class="form-control"/>
+          <input type="submit" value="Send" class="btn btn-default form-control"/>
+        </form>
+      </div>
+    </div> 
+    <div class="row">
+      <div class="col-md-12">
+        <ul>
+          <li ng-repeat="message in messages track by $index">{{message}}</li>
+        </ul>
+      </div>
+    </div>
+  </body>
+</html>

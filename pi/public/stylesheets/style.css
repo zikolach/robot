@@ -1,0 +1,10 @@
+body {
+  padding: 50px;
+}
+
+img#fpv {
+  display: block;
+  -webkit-transform: rotate(180deg);
+  -moz-transform: rotate(180deg);
+  filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=2);
+}
