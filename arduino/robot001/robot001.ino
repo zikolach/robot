@@ -102,11 +102,6 @@ void lookForward() {
   dist[med] = d; //filter
   myservo.detach();
 }
-void setup() {
-    Serial.begin(9600);
-    InitialiseIO();
-    InitialiseInterrupt();
-}
 
 /* print radar */
 void printAngleDist() {
@@ -140,13 +135,11 @@ void autopilot() {
   }
 }
 
-void loop() {
-  detectStop();
-  if (runAutopilot) {
-    autopilot();
-  }
-//  speedCorrection();
-//  delay(maxSpeedDelay);
+void printSpeed() {
+  Serial.print(speed0);
+  Serial.print(" - ");
+  Serial.print(speed1);
+  Serial.println(" (m/s)");
 }
 
 void serialEvent() {
@@ -208,12 +201,6 @@ void detectStop() {
   if (m - m1 > maxSpeedDelay) speed1 = 0;
 }
 
-void printSpeed() {
-  Serial.print(speed0);
-  Serial.print(" - ");
-  Serial.print(speed1);
-  Serial.println(" (m/s)");
-}
 
 void InitialiseIO(){
   pinMode(A0, INPUT);	   // Pin A0 is input to which a switch is connected
@@ -249,3 +236,19 @@ ISR(PCINT1_vect) {
   }
   pinA0 = currA0; pinA1 = currA1;
 }
+
+void setup() {
+    Serial.begin(9600);
+    InitialiseIO();
+    InitialiseInterrupt();
+}
+
+void loop() {
+  detectStop();
+  if (runAutopilot) {
+    autopilot();
+  }
+//  speedCorrection();
+//  delay(maxSpeedDelay);
+}
+
