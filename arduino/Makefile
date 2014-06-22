@@ -1,5 +1,5 @@
 ARDUINO_DIR            = /usr/share/arduino
-TARGET                 = Blink
+TARGET                 = Robot
 ARDUINO_LIBS           =
 MCU                    = atmega328p
 F_CPU                  = 16000000
